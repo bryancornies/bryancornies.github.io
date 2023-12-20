@@ -6,64 +6,126 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bryan Cornies Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://kit.fontawesome.com/1835f7db82.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="bg-white">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <a href="#" class="-m-1.5 p-1.5">
-                <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-            </a>
-            <div class="flex lg:hidden">
-                <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-            </div>
-            <div class="hidden lg:flex lg:gap-x-12">
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Product</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
+    <div id="app">
+        <header class="bg-white">
+            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-            </div>
-        </nav>
-        <!-- Mobile menu, show/hide based on menu open state. -->
-        <div class="lg:hidden" role="dialog" aria-modal="true">
-            <!-- Background backdrop, show/hide based on slide-over state. -->
-            <div class="fixed inset-0 z-10"></div>
-            <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-                    </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Close menu</span>
+                <a href="/" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Bryan Cornies Consulting</span>
+                    <img class="h-8 w-auto rounded-full" src="/img/bryan-cropped.jpg" alt="Bryan Cornies">
+                </a>
+
+                <div class="flex lg:hidden">
+                    <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="isMenuOpen = true">
+                        <span class="sr-only">Open main menu</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
                 </div>
-                <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
-                        </div>
-                        <div class="py-6">
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="/policy/privacy.html" class="text-sm font-semibold leading-6 text-gray-900">Privacy</a>
+                    <a href="/policy/dispute.html" class="text-sm font-semibold leading-6 text-gray-900">Disputes</a>
+                </div>
+            </nav>
+
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            <div :class="isMenuOpen ? [''] : ['hidden']" class="lg:hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-10"></div>
+                <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Bryan Cornies Consulting</span>
+                            <img class="h-8 w-auto rounded-full" src="/img/bryan-cropped.jpg" alt="Bryan Cornies">
+                        </a>
+
+                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="isMenuOpen = false">
+                            <span class="sr-only">Close menu</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="/policy/privacy.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Privacy</a>
+                                <a href="/policy/dispute.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Disputes</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </header>
+
+        <div class="bg-gray-900 py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-4xl font-bold tracking-tight text-sky-500 sm:text-6xl">Welcome.</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">I provide web development and web consulting services. I am based in Calgary, AB. Canada.</p>
+                </div>
+            </div>
         </div>
-    </header>
+
+        <div class="relative isolate bg-white">
+            <div class="mx-auto max-w-7xl">
+                <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-24">
+                    <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
+                        <dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
+                            <div class="flex gap-x-4">
+                                <dt class="flex-none">
+                                    <span class="sr-only">Email</span>
+                                    <i class="fa-solid fa-envelope text-lg text-sky-500"></i>
+                                </dt>
+                                <dd><a class="hover:text-gray-900" href="mailto:bryancornies@gmail.com">bryancornies@gmail.com</a></dd>
+                            </div>
+                            <div class="flex gap-x-4">
+                                <dt class="flex-none">
+                                    <span class="sr-only">LinkedIn</span>
+                                    <i class="fa-brands fa-linkedin text-lg text-sky-500"></i>
+                                </dt>
+                                <dd><a class="hover:text-gray-900" href="https://www.linkedin.com/in/bryancornies/">bryancornies</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white">
+            <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+<!--                <div class="flex justify-center space-x-6 md:order-2">-->
+<!--                    <a href="#" class="text-gray-400 hover:text-gray-500">-->
+<!--                        <span class="sr-only">LinkedIn</span>-->
+<!--                        <i class="fa-brands fa-linkedin text-gray-400"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
+                <div class="mt-8 md:order-1 md:mt-0">
+                    <p class="text-center text-xs leading-5 text-gray-500">&copy; 2023 Bryan Cornies Consulting, Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 </body>
+<script>
+    const { createApp, ref } = Vue
+
+    createApp({
+        setup() {
+            const isMenuOpen = ref(false)
+            return {
+                isMenuOpen
+            }
+        }
+    }).mount('#app')
+</script>
 </html>

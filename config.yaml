@@ -1,0 +1,17 @@
+baseURL: "https://bryancornies.github.io"
+languageCode: en-ca
+title: "Bryan Cornies Consulting"
+menu:
+  main:
+    - identifier: payments
+      name: Payments
+      url: /policy/payments
+      weight: 100
+    - identifier: dispute
+      name: Dispute
+      url: /policy/dispute
+      weight: 200
+    - identifier: privacy
+      name: Privacy
+      url: /policy/privacy
+      weight: 300

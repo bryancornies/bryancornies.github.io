@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<div class="bg-stone-800 py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        {{- $headShot := resources.Get "img/bryan-cropped.jpg" -}}
+        <img class="h-32 w-auto rounded-full mx-auto" src="{{ $headShot.RelPermalink }}" alt="Bryan Cornies">
+        <h2 class="mt-4 text-4xl font-bold tracking-tight text-sky-300 sm:text-6xl">Welcome.</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-300">I provide web development and web consulting services. I am based in Calgary, AB. Canada.</p>
+    </div>
+</div>
+
+<div class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl">
+        <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-24">
+            <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
+                <dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
+                    <div class="flex gap-x-4">
+                        <dt class="flex-none">
+                            <span class="sr-only">Email</span>
+                            <i class="fa-solid fa-envelope text-lg text-sky-500"></i>
+                        </dt>
+                        <dd><a class="hover:text-gray-900" href="mailto:bryancornies@gmail.com">bryancornies@gmail.com</a></dd>
+                    </div>
+                    <div class="flex gap-x-4">
+                        <dt class="flex-none">
+                            <span class="sr-only">LinkedIn</span>
+                            <i class="fa-brands fa-linkedin text-lg text-sky-500"></i>
+                        </dt>
+                        <dd><a class="hover:text-gray-900" href="https://www.linkedin.com/in/bryancornies/">bryancornies</a></dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ end }}
